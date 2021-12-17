@@ -1,3 +1,4 @@
+//PokemonList array featuring Legendary Bird Pokemon from Generations 1 and 2:
 let pokemonList = [
     {
         name: 'Articuno',
