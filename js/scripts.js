@@ -1,6 +1,6 @@
-//PokemonList array featuring Legendary Bird Pokemon from Generations 1 and 2:
+//repository is an array featuring Legendary Pokemon
 let pokemonRepository = (function () {
-    let pokemonList = [
+    let repository = [
         {
             name: 'Articuno',
             type: ['flying', 'ice'],
@@ -35,16 +35,41 @@ let pokemonRepository = (function () {
 
     //Public Functions
     function add(pokemon) {
-        pokemonList.push(pokemon);
+        if (
+            typeof pokemon === 'object' &&
+            'name' in pokemon &&
+            'type' in pokemon &&
+            'height' in pokemon &&
+            'pokedexNumber' in pokemon
+        ) {
+        repository.push(pokemon);
+        } else {
+            console.log('new pokemon information is not correct');
+        }
     }
-    
     function getAll() {
-        return pokemonList;
+        return repository;
     }
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listPokemon = document.createElement('li');
+        let button = document.createElement('button');
 
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+
+        listPokemon.appendChild(button);
+        pokemonList.appendChild(listPokemon);
+
+        //click event, display clicked pokemon name in the console
+        button.addEventListener('click', function() {
+            console.log(pokemon)
+        });
+    }
     return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
     };
 }());
 
@@ -54,13 +79,11 @@ pokemonRepository.add({
     type: 'water',
     height: 15,
     pokedexNumber: '#382'
-})
+});
+
+console.log(pokemonRepository.getAll());
 
 //Loop to list Pokemon facts
-pokemonRepository.getAll().forEach(function(pokemon) {
-    if (pokemon.height >= 14) {
-        document.write('<p>' + pokemon.name + ' (' + 'height: ' + pokemon.height + ') ' + pokemon.pokedexNumber + ' Wow! That\'s a big Pokemon!' + '</p>')
-    } else {
-    document.write('<p>' + pokemon.name + ' (' + 'height: ' + pokemon.height + ') ' + pokemon.pokedexNumber + '</p>')
-    }
+pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
 });
