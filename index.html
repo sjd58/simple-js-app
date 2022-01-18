@@ -3,16 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial scale=1">
-        <title>Simple JS App</title>
+        <title>Pokemon JS App</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>
-            <h1>
-                Facts about Pokemon
-            </h1>
-            <ul class="pokemon-list"></ul>
+            <h1>Pokedex</h1>
         </header><br>
+        <button id='show-modal'>Show modal</button>
+        <div id='modal-container'>    
+        </div>
+        <div>
+            <ul class="pokemon-list"></ul>
+        </div>
         <div>
             <script src="js/promise-polyfill.js"></script>
             <script src="js/fetch-polyfill.js"></script>
