@@ -1,4 +1,4 @@
-let pokemonRepository = (function () {
+const pokemonRepository = (function () {
     //IIFE Function
 
     let pokemonList = [];
