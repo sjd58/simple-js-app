@@ -25,10 +25,11 @@ const pokemonRepository = (function () {
         const listPokemon = document.createElement('li');
         const button = document.createElement('button');
 
-        listPokemon.classList.add('listPokemon-class');
+        //listPokemon.classList.add('listPokemon-class');
+        listPokemon.classList.add('group-list-item');
 
         button.innerText = pokemon.name;
-        button.classList.add('button-class');
+        button.classList.add('button-class', 'btn', 'btn-primary');
 
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
@@ -47,7 +48,8 @@ const pokemonRepository = (function () {
                     detailsUrl: item.url
                 };
                 add(pokemon);
-                console.log(pokemon);
+                //uncomment to display pokemon information in the console
+                //console.log(pokemon);
             });
         }).catch(function (e) {
             console.error(e);
@@ -71,12 +73,41 @@ const pokemonRepository = (function () {
 
     function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
-            //console.log(pokemon);
+            console.log(pokemon);
             showModal(pokemon);
         });
     }    
+    
+    /* SHOW MODAL FUNCTION INTRODUCED IN 1.10 USING BOOTSTRAP, shown on the video */
 
     function showModal(pokemon) {
+        let modalBody = $('.modal-body');
+        let modalTitle = $('.modal-title');
+        let modalHeader = $('.modal-header');
+
+        modalTitle.empty();
+        modalBody.empty();
+
+        //creating element for name in modal content
+
+        let nameElement = $('<h1>' + pokemon.name + '</h1>');
+        //creating img in modal content
+        let imageElementFront= $('<img class="modal-img" style="width:50%">');
+        imageElementFront.attr('src', item.imageURLFront);
+        let imageElementBack = $('<img class="modal-img" style="width:50%">');
+        imageElementBack.attr('src', image.imageURLBack);        
+        //creating element for height in modal content
+        let heightElement = $('<p>' + 'height: ' + pokemon.height + '</p>');
+
+        modalTitle.append(nameElement);
+        modalBody.append(imageElementFront);
+        modalBody.append(imageElementBack);
+        modalBody.append(heightElement);
+    }
+
+    /* JS FOR PREVIOUS SHOW MODAL FUNCTION */
+
+     function showModal(pokemon) {
         modalContainer.innerHTML = '';
 
         let modal = document.createElement('div');
@@ -139,7 +170,7 @@ const pokemonRepository = (function () {
     };
 }());
 
-//console.log(pokemonRepository.getAll());
+console.log(pokemonRepository.getAll());
 
 pokemonRepository.loadList().then(function() {
     pokemonRepository.getAll().forEach(function(pokemon) {
