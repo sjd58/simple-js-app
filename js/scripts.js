@@ -78,7 +78,7 @@ const pokemonRepository = (function () {
         });
     }    
     
-    /* SHOW MODAL FUNCTION INTRODUCED IN 1.10 USING BOOTSTRAP, shown on the video */
+    /* SHOW MODAL FUNCTION INTRODUCED IN 1.10 USING BOOTSTRAP, code shown on the video */
 
     function showModal(pokemon) {
         let modalBody = $('.modal-body');
