@@ -30,6 +30,9 @@ const pokemonRepository = (function () {
 
         button.innerText = pokemon.name;
         button.classList.add('button-class', 'btn', 'btn-primary');
+        
+        button.setAttribute("data-target", "#exampleModal");
+        button.setAttribute("data-toggle", "modal");
 
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
