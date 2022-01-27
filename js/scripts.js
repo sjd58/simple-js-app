@@ -3,7 +3,6 @@ const pokemonRepository = (function () {
 
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-    let modalContainer = document.querySelector('#modal-container');
 
     function add(pokemon) {
         if (
@@ -26,9 +25,10 @@ const pokemonRepository = (function () {
         const button = document.createElement('button');
 
         //listPokemon.classList.add('listPokemon-class');
-        listPokemon.classList.add('group-list-item');
+        listPokemon.classList.add('list-item-class'); //changed from 'group-list-item'
 
         button.innerText = pokemon.name;
+
         button.classList.add('button-class', 'btn', 'btn-primary');
 
         button.setAttribute("data-target", "#exampleModal");
@@ -88,22 +88,17 @@ const pokemonRepository = (function () {
         modalTitle.empty();
         modalBody.empty();
 
-        //creating element for name in modal content
-
         const nameElement = $('<h1>' + pokemon.name + '</h1>');
-
-        //creating img in modal content
-
         const imageElement= $('<img class="modal-img" style="width:50%">');
         imageElement.attr('src', pokemon.imageURL);
 
-        //creating element for height in modal content
-
-        const heightElement = $('<p>' + 'height: ' + pokemon.height + '</p>');
+        const heightElement = $('<p>' + 'Weight: ' + pokemon.height + ' m' + '</p>');
+        const weightElement = $('<p>' + 'Weight: ' + pokemon.weight + ' kg' + '</p>');
 
         modalTitle.append(nameElement);
         modalBody.append(imageElement);
         modalBody.append(heightElement);
+        modalBody.append(weightElement);
     }
 
     return {
