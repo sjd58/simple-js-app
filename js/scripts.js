@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const pokemonRepository = (function () {
     //IIFE Function
 
@@ -31,14 +33,11 @@ const pokemonRepository = (function () {
 
         button.classList.add('button-class', 'btn', 'btn-primary');
 
-        button.setAttribute("data-target", "#exampleModal");
-        button.setAttribute("data-toggle", "modal");
+        button.setAttribute('data-target', '#exampleModal');
+        button.setAttribute('data-toggle', 'modal');
 
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
-        button.addEventListener('click', function(event) {
-            showDetails(pokemon);
-        });
     }
 
     function loadList() {
