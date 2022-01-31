@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-
+/* declared to remove linting errors associated with Bootstrap */
 const pokemonRepository = (function () {
     //IIFE Function
 
